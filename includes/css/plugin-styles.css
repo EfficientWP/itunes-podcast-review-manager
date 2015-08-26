@@ -1,0 +1,461 @@
+/****** FLAT DESIGN COLORS ******
+
+TURQUOISE       (LIGHT AQUA)      #1abc9c
+GREEN SEA       (DARK AQUA)       #16a085
+EMERALD         (LIGHT GREEN)     #2ecc71
+NEPHRITIS       (DARK GREEN)      #27ae60
+PETER RIVER     (LIGHT BLUE)      #3498db
+BELIZE HOLE     (DARK BLUE)       #2980b9
+AMETHYST        (LIGHT PURPLE)    #9b59b6
+WISTERIA        (DARK PURPLE)     #8e44ad
+WET ASPHALT     (DARK GRAY)       #34495e
+MIDNIGHT BLUE   (DARKER GRAY)     #2c3e50
+SUN FLOWER      (YELLOW)          #f1c40f
+ORANGE          (LIGHT ORANGE)    #f39c12
+CARROT          (DARK ORANGE)     #e67e22
+PUMPKIN         (DARKER ORANGE)   #d35400
+ALIZARIN        (LIGHT RED)       #e74c3c
+POMEGRANATE     (DARK RED)        #c0392b
+CLOUDS          (OFF WHITE)       #ecf0f1
+SILVER          (LIGHTER GRAY)    #bdc3c7
+CONCRETE        (LIGHT GRAY)      #95a5a6
+ASBESTOS        (MEDIUM GRAY)     #7f8c8d
+
+******/
+
+/* FIXES HEADINGS MARGINS FROM WP -> DO NOT REMOVE */
+.wrap>h1, h2 {
+
+    margin: 0;
+}
+	
+/****** GENERAL STYLES ******/
+
+#iprm_wrapper {
+	min-width: 920px;
+ 
+}
+
+.toplevel_page_iprm_main_page div#wpwrap, 
+.podcast-reviews_page_iprm_premium_page div#wpwrap, 
+.podcast-reviews_page_iprm_settings_page div#wpwrap {
+	background-color: #34495e;
+	color: #333;
+	font-size: 0.9rem;
+}
+.toplevel_page_iprm_main_page div#wpcontent, 
+.podcast-reviews_page_iprm_premium_page div#wpcontent. 
+.podcast-reviews_page_iprm_settings_page div#wpcontent {
+    padding-left: 0;
+}
+.iprm {
+	background-color: #34495e;
+	padding: 1rem;
+	width: 1200px;
+}
+.iprm, 
+.iprm p {
+	font-size: 100%;
+	letter-spacing: 0.02rem;
+	line-height: 1.6;
+	margin: 0 0 1rem 0;
+}
+
+/****** NOTICES ******/
+
+.iprm-alert, 
+.iprm-notice {
+	margin-top: 1rem;
+	color: #fff;
+	padding: 1rem;
+	display: block;
+	margin-left: -20px;
+    text-align: center;
+}
+
+.iprm-alert {
+	background-color: #e74c3c;
+}
+.iprm-notice {
+	background-color: #e67e22;
+}
+
+
+/****** OTHER ******/
+
+p.submit {
+	padding: 0;
+}
+
+.iprm a {
+	border: none !important;
+	text-decoration: none;
+}
+
+/****** ICONS ******/
+
+.iprm a span.dashicons, 
+.iprm a::before {
+	text-decoration: none;
+	vertical-align: middle;
+}
+.iprm .iprm-sort-text {
+	display: inline-block;
+	vertical-align: middle;
+}
+.iprm .iprm-sort-icon {
+	display: inline-block;
+	vertical-align: middle;
+}
+.iprm .iprm-sort-icon a span.dashicons {
+	color: #fff;
+	font-size: 1.6rem;
+	height: 1.6rem;
+	width: 1.6rem;
+}
+.iprm .iprm-sort-icon a:hover span.dashicons {
+	color: #333;
+}
+
+/****** GENERAL ******/
+.iprm_tab {
+	margin-left: 1%;
+	margin-right: 1%;
+	width: 98%;
+	margin-bottom: 15px;
+	display: inline-block;
+	background-color: white;
+    overflow: hidden;
+	margin: 1rem 0;
+	padding-bottom: 1rem;
+
+}
+
+.iprm_tab_content {
+	padding: 1rem;
+}
+
+.iprm_tab h2{
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 300;
+	background-color: #27ae60;
+	display: block;
+    letter-spacing: 0.2rem;
+    padding: 1rem;
+	text-transform: uppercase;
+	text-align: left;
+	line-height: 2.3rem;
+}
+
+.iprm_tab p {
+    font-size: 100%;
+    letter-spacing: 0.02rem;
+    line-height: 1.6;
+    margin: 0 0 1rem 0;
+	padding: 1rem;
+}
+
+/****** BUTTONS *******/
+
+#iprm_add_url, #iprm_product_select{
+    background-color: #ecf0f1;
+    border: none;
+    box-shadow: none;
+	min-width: 200px;
+	max-width: 90%;
+}
+#iprm_delete_product {
+	background-color: #e74c3c;
+	
+}
+
+#iprm_delete_product:hover{
+	background-color: #c0392b;	
+}
+
+
+#iprm_reset_all_data_btn {
+	background-color: #999;
+}
+
+
+#iprm_reset_all_data_btn:hover{
+	background-color: #bdc3c7;
+}
+
+
+.iprm_button_primary {
+	background-color: #3498db;
+	border: none;
+	border-radius: 0;
+	color: #fff;
+	font-size: 1.2rem;
+	height: inherit;
+	line-height: 1.6;
+	padding: 0.5rem 1rem;
+	width: 100%;
+}
+.iprm_button_primary:hover {
+	background-color: #2980b9;
+}
+.iprm_button_secondary {
+	background-color: #bdc3c7;
+	border: none;
+	border-radius: 0;
+	color: #fff;
+	font-size: 1.2rem;
+	height: inherit;
+	line-height: 1.6;
+	padding: 0.5rem 1rem;
+	width: 100%;
+}
+.iprm_button_secondary:hover {
+	background-color: #95a5a6;
+}
+
+.iprm_button_small {
+	background-color: #3498db;
+	border: none;
+	border-radius: 0;
+	color: #fff;
+	font-size: 1.2rem;
+	height: inherit;
+	line-height: 1.6;
+	padding: 0.5rem 1rem;
+
+}
+.iprm_button_small:hover {
+	background-color: #2980b9;
+}
+
+/****** METADATA ******/
+#iprm_metadata {
+	display: table;
+	height: 100%;
+	padding-bottom: 0;
+}
+
+#iprm_meta_img {
+
+	display: table-cell;
+	background-color: #ecf0f1;
+	vertical-align: top;
+	text-align: center;
+	padding: 1rem;
+	height: 100%;
+}
+
+
+#iprm_metadata .iprm_tab_content  {
+		display: table-cell;
+		width: 100%;
+		padding: 0;
+		
+}
+#iprm_metadata p{
+		padding: 0;
+		margin: 0;
+		margin-left: 1rem;
+		padding-top: 1rem;	
+		padding-right: 1rem;			
+}
+#iprm_metadata p:last-child{
+
+		padding-bottom: 1rem;		
+}
+
+
+/******* SETTINGS TAB *****/
+
+#iprm_input_settings, #iprm_crawl_settings {
+width: 50%;
+display: inline-block;
+box-sizing: border-box;
+vertical-align: top;
+}
+
+#iprm_input_settings_left {
+	padding-left: 1rem;
+	padding-bottom: 1rem;
+}
+#iprm_input_settings_left h2{
+	margin-left: -1rem;
+}
+
+#iprm_input_settings_left p{
+	margin: 0.25rem;
+	padding: 0.25rem;
+
+}
+#iprm_input_settings_right p, h2{
+	margin-left: 0;
+
+}
+
+#iprm_crawl_settings {
+float: right;
+}
+/****** ANALYTICS ******/
+#iprm_analytics {
+	min-height: 200px;
+	background-color: #ecf0f1;
+}
+
+#iprm_analytics_labels{
+	width: 100%;
+	text-align: center;
+	padding: 1rem 1rem 0 1rem; 
+	margin:0;
+
+	font-size: 100%;
+    letter-spacing: 0.02rem;
+    line-height: 1.6;
+}
+
+#iprm_piechart {
+	margin: 0;
+	width: 50%;
+	height: 300px;
+	display: inline-block;
+	box-sizing: border-box;
+	background-color: #ecf0f1;
+
+	padding: 0;
+	padding-left: 1rem;
+}
+#iprm_barchart_material {
+	margin: 0;
+	width: 49%;
+	height: 300px;
+	display: inline-block;
+	box-sizing: border-box;
+	background-color: #ecf0f1;
+
+	padding: 0;
+	padding-right: 1rem;
+}
+
+/****** FILTER ******/
+
+
+#iprm_filter label {
+	margin: 15px
+}
+
+
+#iprm_filter button {
+	margin-right: 15px;
+}
+
+#iprm_filter select {
+	background-color: #ecf0f1;
+}
+
+/****** TABLES ******/
+
+.iprm_table
+{
+	border-collapse: collapse;
+	border-spacing: 0;
+	max-width: 100%;
+}
+
+.iprm_table a, .iprm_table a:visited
+{
+	text-decoration: none;
+	color: white;
+}
+
+.iprm_table th,
+.iprm_table td
+{
+	border: 0;
+	padding: 1rem;
+}
+
+.iprm_table td{
+
+	vertical-align: top;
+}
+
+.iprm_table th
+ {
+	background-color: #27ae60;
+	color: #fff;
+	font-weight: normal;
+	text-align: left;
+	text-transform: uppercase;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
+.iprm_table th h2 
+{
+	color: #fff;
+	font-size: 1.6rem;
+    font-weight: 300;
+    letter-spacing: 0.2rem;
+    line-height: inherit;
+    padding: 0;
+}
+
+.iprm_table  tr:nth-child(even) 
+ {
+    background-color: #fff;
+}
+
+.iprm_table  tr:nth-child(odd) 
+ {
+    background-color: #ecf0f1;
+}
+
+.iprm_table  th:nth-child(even) 
+ {
+    background-color: #27ae60;
+}
+
+.iprm_table  th:nth-child(odd) 
+ {
+    background-color: #2ecc71;
+}
+
+.iprm th.iprm-sort {
+	text-align: right;
+}
+.iprm th.iprm-alt {
+	background-color: #2ecc71;
+}
+.iprm_sort_control{
+	float: right;
+}
+#iprm_main_table_body {
+	margin-top: 10px;
+	border-collapse: collapse;
+	margin-left:0;
+	margin-right: 0;
+	width: 100%;
+}
+
+/** REVIEW TABLE COLUMN HEADINGS **/
+
+/*DATES - KEEP ON 1 LINE */
+#iprm_main_table_body th:nth-child(4) {
+	min-width: 80px;
+}
+
+#iprm_main_table_body th, {
+	vertical-align: top;
+}
+
+
+#iprm_main-table_body td.flag
+{	
+	padding-top: 0.5rem;
+}
+
+/****** RESPONSIVE -> THIS IS NOT ******/
+
+@media only screen and (max-width: 767px) {
+	
+}
