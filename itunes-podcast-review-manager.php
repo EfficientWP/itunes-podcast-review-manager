@@ -3,7 +3,7 @@
 Plugin Name: iTunes Podcast Review Manager
 Plugin URI: http://efficientwp.com/plugins/itunes-podcast-review-manager
 Description: Get your iTunes podcast reviews from all countries. Checks iTunes automatically and displays your podcast reviews in a sortable table.
-Version: 2.3
+Version: 2.3.1
 Author: Doug Yuen and Ryan Novotny
 Author URI: http://efficientwp.com
 License: GPLv2
@@ -13,7 +13,7 @@ License: GPLv2
 * GLOBAL VARIABLES
 *****************************/
 
-$iprm_current_plugin_version = 2.3;
+$iprm_current_plugin_version = '2.3.1';
 $iprm_review_cache = get_option( 'iprm_review_cache' );
 $iprm_review_cache_history = get_option( 'iprm_review_cache_history' );
 $iprm_settings = get_option( 'iprm_settings' );
