@@ -6,6 +6,8 @@ add_action( 'admin_menu', 'iprm_add_main_page_link' );
 
 
 function iprm_main_page() {
+	global $iprm_current_plugin_version;
+	echo "version $iprm_current_plugin_version";
 	/* LOAD CURRENT */
 	
 	
