@@ -66,13 +66,10 @@ class IPRM_Podcast {
 	
 	function get_itunes_metadata($url) {
 		
-		preg_match ( '([0-9][0-9][0-9]+)', $url, $matches );
-				
+		preg_match ( '([0-9][0-9][0-9]+)', $url, $matches );		
 		
 		/* ONLY CONTINUE IF WE HAVE GOOD URL AND PARSED AN ID */
-		if ( (filter_var($url, FILTER_VALIDATE_URL)) && (isSet ( $matches[0])) ){
-				
-	
+		if ( (filter_var($url, FILTER_VALIDATE_URL)) && (isSet ( $matches[0])) ){			
 	
 		/* POPULATE METADATA ARRAY */
 		$metadataArray['itunes_id'] = $matches[0];
@@ -111,8 +108,6 @@ class IPRM_Podcast {
 			$metadataArray['itunes_feed_summary'] = "";
 		}
 		
-		
-		
 		/* CANT GET ART THIS WAY, HAVE TO CHECK XML FEED */
 		$url_xml = 'https://itunes.apple.com/us/rss/customerreviews/id=' . $metadataArray['itunes_id'] . '/xml';
 		$itunes_json1 = json_encode( wp_remote_get( $url_xml ) );
@@ -121,7 +116,6 @@ class IPRM_Podcast {
 		
 		$itunes_feed_image = iprm_get_contents_inside_tag( $url_xml, '<im:image height="170">', '</im:image>' );
 		$metadataArray['itunes_feed_image'] = $itunes_feed_image;
-	
 				
 		return $metadataArray;
 		
@@ -169,7 +163,7 @@ class IPRM_Podcast {
 			
 				
 				<div id="iprm_main_table" class="iprm_tab">
-					<h2>REVIEWS</h2>
+					<h2 id="iprm_review_h2">REVIEWS</h2>
 					<table id="iprm_main_table_body" class="iprm_table sortable"  border="0" cellpadding="0" cellspacing="0">
 						
 						<!-- TABLE HEADINGS -->
@@ -339,7 +333,12 @@ class IPRM_Podcast {
 			}
 				
 			$urls_to_crawl = array_unique( $urls_to_crawl );
+			$limiter = 0;
 			foreach ( $urls_to_crawl as $url ) {
+				$limiter++;
+				if ($limiter > 100) {
+					break;
+				}
 				$itunes_json = json_encode( wp_remote_get( $url ) );
 				$data2 = json_decode( $itunes_json, TRUE );
 				$feed_body = $data2['body'];
@@ -383,21 +382,15 @@ class IPRM_Podcast {
 				}
 			}
 		/* DE-DUPE NEW REVIEWS */
-		
-		
 		$new_reviews = iprm_remove_duplicates_from_review_array( $new_reviews  );
 		
 		/* ADD CACHED REVIEWS TO NEW REVIEWS */
 		if (!is_array ($this->reviews)) { $this->reviews = []; }
 		
-	//	echo "merging old review count of " . count($this->reviews) . " with new review count of " . count($new_reviews) . "<br>";
-		
 		$this->reviews = array_merge( $this->reviews, $new_reviews );
 
 		/* REMOVE DUPLICATES FROM COMBINED REVIEW ARRAY */
 		$this->reviews = iprm_remove_duplicates_from_review_array( $this->reviews  );
-		
-	//	echo "post merge count is  " . count($this->reviews);
 		
 		/* ADD TIME AND REVIEW COUNT TO REVIEW CACHE HISTORY */
 		$review_count = count( $this->reviews );

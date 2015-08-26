@@ -4,26 +4,20 @@
 
 function iprm_automatic_check() {
 	
-
-	$msgBuffer = '';
-	
 	$podcastArray = iprm_get_option( 'iprm_podcasts' );
 		if (!is_array ( $podcastArray )){
 			$podcastArray = array();
 			
 	}
+
 	
-	/* SEND E-MAIL */
 	forEach($podcastArray as $pURL){
 		$podcast = new IPRM_Podcast($pURL);
 		
 		$podcast->get_itunes_feed_contents();
 		
-		
 	}
-	
 
-	
 }
 
 function iprm_delete_product($productToDeleteURL) {
@@ -40,9 +34,7 @@ function iprm_delete_product($productToDeleteURL) {
 	
 	$dbSuccess = iprm_delete_option(  "iprm_review_cache_history$productToDeleteURL" );
 	$dbSuccess = iprm_delete_option( "iprm_review_cache$productToDeleteURL" );
-	
-	
-	
+
 };
 
 
