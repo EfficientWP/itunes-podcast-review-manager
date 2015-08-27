@@ -7,9 +7,9 @@ add_action( 'admin_menu', 'iprm_add_premium_page_link' );
 function iprm_premium_page() {
 	ob_start(); ?>
 
-	<div class="iprm_tab" id="iprm_premium">
+	<div class="iprm_panel" id="iprm_premium">
 		<h2><?php _e( 'Premium Service - Launching Soon!', 'iprm_domain' ); ?></h2>
-		<div class="iprm_tab_content">
+		<div class="iprm_panel_content">
 			<p><?php _e( 'For more information and to find out when we launch, please <a href="http://eepurl.com/bhU4SD" target="_blank">enter your email here</a>.', 'iprm_domain' ); ?></p>
 		</div>
 	</div>

@@ -6,6 +6,7 @@ function iprm_deactivate() {
 	wp_clear_scheduled_hook( 'iprm_schedule' );
 	iprm_delete_option( 'iprm_settings' );
 	iprm_delete_option( 'iprm_active_product' );
+	iprm_delete_option( 'iprm_current_version' );
 	$podcastArray = iprm_get_option( 'iprm_podcasts' );
 		
 	/* REMOVE CACHE FROM DB */
