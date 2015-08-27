@@ -6,8 +6,7 @@ add_action( 'admin_menu', 'iprm_add_main_page_link' );
 
 
 function iprm_main_page() {
-	global $iprm_current_plugin_version;
-	echo "version $iprm_current_plugin_version";
+
 	/* LOAD CURRENT */
 	
 	
@@ -105,14 +104,9 @@ function iprm_main_page() {
 		$notice = __( 'All settings and cache have been cleared.', 'iprm_domain' );
 	}
 	
-	/* IF CACHE IS EMPTY, CHECK FOR NEW REVIEWS */
-	if ( empty( $podcast->reviews ) && (filter_var($podcast->itunes_url, FILTER_VALIDATE_URL)) ) {
-		
-		$podcast->get_itunes_feed_contents();
-		
-	}
+	/* IF CACHE IS EMPTY, DISPLAY NOTICE */
 	if ( empty( $podcast->reviews ) && (isSet ($podcast->itunes_id ))) {
-		$alert = __( 'No reviews found for this podcast.', 'iprm_domain' );
+		$alert = __( 'No reviews found for this podcast.  Click CHECK MANUALLY or check back later.', 'iprm_domain' );
 	}
 	
 	/* START OUTPUT */
@@ -128,42 +122,39 @@ function iprm_main_page() {
 	
 	ob_start(); ?>
 	
-		<div id="iprm_settings_bar" class="iprm_tab">
+		<div id="iprm_settings_bar" class="iprm_panel">
 		<form action="<?php echo $_SERVER["REQUEST_URI"]; ?>" method="POST">
 			<div id="iprm_input_settings">
-				<div id="iprm_input_settings_left">
-				<h2>Settings</h2>
-				<h3>Product Url</h3>	
-				<p>Please note that adding a new product may take a few moments.</p>
-				<input type="url" id="iprm_add_url" name="iprm_add_url" size="80" value="<?php echo $podcast->itunes_url; ?>">
+				<h2><?php _e( 'Settings', 'iprm_domain' ); ?></h2>
+				<div class="iprm_panel_content">
+					<h3><?php _e( 'Product URL', 'iprm_domain' ); ?></h3>	
+					<p><?php _e( 'Adding a new product or manually checking may take a few minutes.', 'iprm_domain' ); ?></p>
+					<input type="url" id="iprm_add_url" name="iprm_add_url" size="80" value="<?php echo $podcast->itunes_url; ?>">
 				
-				<input class="iprm_button_small" type="submit" name="iprm_update_url" value="ADD PRODUCT">
-				
-				
+					<input class="iprm_button_small" type="submit" name="iprm_update_url" value="UPDATE">
+					
 				</div>
 			</div>
 			<div id="iprm_crawl_settings">
-				<div id="iprm_input_settings_right">
-				<h2>History</h2>
-				<p><b><?php _e( 'Recent History:', 'iprm_domain' ); ?></b><br />
-					<?php
-					$i = 1;
-					if ( is_array( $podcast->review_cache_history ) ) {
-						foreach ( array_reverse( $podcast->review_cache_history ) as $item ) {
-							$i++;
-							echo $item['time'] . ' Reviews: ' . $item['count'] . '<br />';
-							if ( $i > 5 ) {
-								break;
+				<h2><?php _e( 'History', 'iprm_domain' ); ?></h2>
+				<div class="iprm_panel_content">
+					<h3><?php _e( 'Recent History', 'iprm_domain' ); ?></h3>
+					<p>
+						<?php
+						$i = 1;
+						if ( is_array( $podcast->review_cache_history ) ) {
+							foreach ( array_reverse( $podcast->review_cache_history ) as $item ) {
+								$i++;
+								echo $item['time'] . ' Reviews: ' . $item['count'] . '<br />';
+								if ( $i > 5 ) {
+									break;
+								}
 							}
 						}
-					}
-					?></p>
-					
-				<p>Reviews automatically update every 4 hours.</p>
-
-
-				<input class="iprm_button_small" type="submit" name="iprm_check_manually" id="iprm_check_manually_btn"value="<?php _e( 'CHECK MANUALLY', 'iprm_domain' ); ?>">
-				<input class="iprm_button_small" type="submit" name="iprm_reset_all_data" id="iprm_reset_all_data_btn" value="<?php _e( 'RESET ALL DATA', 'iprm_domain' ); ?>">	
+						?>
+					</p>
+					<p><?php _e( 'Reviews update automatically every 4 hours.', 'iprm_domain' ); ?></p>
+					<input class="iprm_button_small" type="submit" name="iprm_check_manually" id="iprm_check_manually_btn"value="<?php _e( 'CHECK MANUALLY', 'iprm_domain' ); ?>">
 				</div>
 			</div>
 		</form>
@@ -174,10 +165,11 @@ function iprm_main_page() {
 			}
 		?>
 		
-	</div>
+	
 	<footer>
 	<p style="color: #ecf0f1; text-align: right;">Flag icons by <a href="http://www.icondrawer.com" target="_blank">IconDrawer</a>.</p>
 	</footer>
+	</div>
 	<?php
 	echo ob_get_clean();
 }

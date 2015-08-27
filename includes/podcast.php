@@ -128,18 +128,17 @@ class IPRM_Podcast {
 		$output = '';
 		/* CHECKS TO MAKE SURE ITUNES PODCAST URL IS DEFINED */
 		if ( $this->itunes_url != '' ) {
-			/* DISPLAY HEADING AND TABLE WITH PODCAST INFO */
-			$output = '
-				<div class="iprm_tab" id="iprm_metadata">
-					<div id="iprm_meta_img"><img src="' . $this->itunes_feed_image . '" /></div>
-					
-					<div class="iprm_tab_content">
-					<h2>' . $this->itunes_feed_name . '</h2>
-					<p>by ' .  $this->itunes_feed_artist . '</p>
-					<p>' . $this->itunes_feed_summary . '</p>
-					</div>
+			$output = "
+			<div class='iprm_panel' id='iprm_metadata'>
+				<div id='iprm_meta_img'>
+					<img src='$this->itunes_feed_image'>
 				</div>
-			';
+				<div class='iprm_panel_content'>
+					<h2>$this->itunes_feed_name</h2>
+					<p>$this->itunes_feed_artist</p>
+					<p>$this->itunes_feed_summary</p>
+				</div>
+			</div>";	
 		}
 		return $output;
 	}
@@ -162,7 +161,7 @@ class IPRM_Podcast {
 			ob_start(); ?>
 			
 				
-				<div id="iprm_main_table" class="iprm_tab">
+				<div id="iprm_main_table" class="iprm_panel">
 					<h2 id="iprm_review_h2">REVIEWS</h2>
 					<table id="iprm_main_table_body" class="iprm_table sortable"  border="0" cellpadding="0" cellspacing="0">
 						
