@@ -221,13 +221,13 @@ class IPRM_Podcast {
 						
 						<!-- REVIEWS -->
 						<?php
-							if ( count($this->reviews) > 0 ) {
+							if ( count( $this->reviews ) > 0 ) {
 							
 							foreach( $this->reviews as $review ) {
 								$review_number++;
 								$rating_total += $review['rating'];
-								$date = date_create($review['review_date']);
-								$date = date_format($date, 'Y-m-d');
+								$date = date_create( $review['review_date'] );
+								$date = date_format( $date, 'Y-m-d' );
 								
 								if ( strlen( $review['country'] ) == 2 ) {
 										$code = $review['country'];
@@ -261,14 +261,16 @@ class IPRM_Podcast {
 				
 				</div>
 				
-			<?php /* SEND OUTPUT */
-				echo ob_get_clean();	
+			<?php /* SEND OUTPUT */	
+				return ob_get_clean();
 		}
+		return FALSE;
+
 	} /* END DISPLAY REVIEW FUNCTION */
 	
 	function get_itunes_feed_contents() {
 	
-		$this->get_itunes_metadata($this->itunes_url);
+		$this->get_itunes_metadata( $this->itunes_url );
 
 		$new_reviews = array( );
 		$new_settings = array( );
@@ -276,7 +278,7 @@ class IPRM_Podcast {
 		$country_codes = iprm_get_country_data( '', '' );
 		/* CHECKS TO MAKE SURE ITUNES PODCAST URL IS DEFINED */
 		
-		if ( isSet ($this->itunes_id) ) {
+		if ( isSet( $this->itunes_id ) ) {
 			
 			$urls_to_crawl = array( );
 
@@ -296,9 +298,9 @@ class IPRM_Podcast {
 				$last_review_page_url = trim($last_review_page_url);
 				$first_review_page_url = trim($first_review_page_url);
 				
-				if (strlen($first_review_page_url) != 0){
+				if ( strlen( $first_review_page_url ) != 0 ) {
 					$firstPage = iprm_get_contents_inside_tag( $first_review_page_url, '/page=', '/id' );
-				}else {
+				} else {
 					$firstPage = 1;
 				}
 				
@@ -372,7 +374,7 @@ class IPRM_Podcast {
 						/* CHECK TO MAKE SURE THERE IS A RATING AND NAME BEFORE ADDING REVIEW TO ARRAY */
 						if ( ( $new_review['rating'] == '' ) || ( $new_review['name'] == '' ) ||( $new_review['name'] == 'EMPTYSTR' ) ) {
 							
-						}else{ 
+						} else{ 
 							array_push( $new_reviews, $new_review );
 						}
 					}
@@ -419,7 +421,7 @@ class IPRM_Podcast {
 		
 		/* RETURN COMBINED REVIEW ARRAY */
 		return $this->reviews;
-	}else {
+	} else {
 		//echo "invalid itunes url";
 	}
 	

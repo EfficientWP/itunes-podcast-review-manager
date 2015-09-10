@@ -3,7 +3,8 @@
 /* FOR DISPLAYING CONTENT */
 
 function iprm_display_as_shortcode( ) {
-	$podcast = new IPRM_Podcast();
+	$url = iprm_get_option( 'iprm_active_product' );
+	$podcast = new IPRM_Podcast( $url );
 	return $podcast->display_page_reviews();
 }
 function iprm_display_navigation( $current_page ) {

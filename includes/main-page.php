@@ -167,7 +167,7 @@ function iprm_main_page() {
 		
 	
 	<footer>
-	<p style="color: #ecf0f1; text-align: right;">Flag icons by <a href="http://www.icondrawer.com" target="_blank">IconDrawer</a>.</p>
+	<p>Flag icons by <a href="http://www.icondrawer.com" target="_blank">IconDrawer</a>.</p>
 	</footer>
 	</div>
 	<?php

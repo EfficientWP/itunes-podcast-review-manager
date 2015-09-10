@@ -130,6 +130,9 @@ p.submit {
     text-align: left;
 	text-transform: uppercase;
 }
+.iprm_panel h2#iprm_review_h2 {
+	color: #fff;
+}
 .iprm_panel_content {
 	background-color: #fff;
 	padding: 1rem;
@@ -358,13 +361,13 @@ p.submit {
 
 /** REVIEW TABLE COLUMN HEADINGS **/
 
-/* DATES - KEEP ON 1 LINE */
-
+/* COUNTRIES - KEEP ON 1 LINE */
 #iprm_main_table_body th:nth-child(3) {
 	min-width: 80px;
 }
+/* DATES - KEEP ON 1 LINE */
 #iprm_main_table_body th:nth-child(4) {
-	min-width: 100px;
+	min-width: 85px;
 }
 #iprm_main_table_body th {
 	vertical-align: top;
@@ -382,8 +385,19 @@ p.submit {
 	text-align: right;
 }
 
-/****** RESPONSIVE -> THIS IS NOT ******/
+/****** RESPONSIVE ******/
 
-@media only screen and (max-width: 767px) {
-	
+@media only screen and (max-width: 1200px) {
+	#iprm_main_table_body th, #iprm_main_table_body td, #iprm_main_table_body td p {
+		font-size: 1rem;
+	}
+}
+@media only screen and (max-width: 800px) {
+	#iprm_main_table_body {
+	    margin: 0;
+    	width: auto;
+	}
+	#iprm_main_table_body th, #iprm_main_table_body td {
+	    display: block;
+	}
 }
