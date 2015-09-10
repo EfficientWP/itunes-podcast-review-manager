@@ -57,7 +57,8 @@ function iprm_main_page() {
 		iprm_update_option( 'iprm_active_product', $itunes_url );
 		$podcast =  new IPRM_Podcast ( $itunes_url );
 		if ($podcast->itunes_id != ''){
-		$notice = __( 'Your iTunes URL has successfully been updated.', 'iprm_domain' );
+			$notice = __( 'Your iTunes URL has successfully been updated.<br>', 'iprm_domain' );
+			$notice .= __( 'Please click CHECK MANUALLY to check for new reviews now. Otherwise, the next auto-check will be in approximately 4 hours.', 'iprm_domain' );
 		}else {
 			$alert = __( 'iTunes URL could not be updated.  Please check the URL and try again.', 'iprm_domain' ) . '<br />';
 			$alert .= '<i>' . __( 'Example: http://itunes.apple.com/us/podcast/professional-wordpress-podcast/id885696994.', 'iprm_domain' ) . '</i>';
@@ -98,15 +99,12 @@ function iprm_main_page() {
 		
 		iprm_delete_option( 'iprm_active_product' );
 		
-	//	wp_clear_scheduled_hook( 'iprm_schedule' );
-		
-		
 		$notice = __( 'All settings and cache have been cleared.', 'iprm_domain' );
 	}
 	
 	/* IF CACHE IS EMPTY, DISPLAY NOTICE */
 	if ( empty( $podcast->reviews ) && (isSet ($podcast->itunes_id ))) {
-		$alert = __( 'No reviews found for this podcast.  Click CHECK MANUALLY or check back later.', 'iprm_domain' );
+		$podcast->get_itunes_feed_contents();
 	}
 	
 	/* START OUTPUT */
