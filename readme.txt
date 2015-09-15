@@ -5,7 +5,7 @@ Author URI: http://efficientwp.com
 Plugin URI: http://efficientwp.com/plugins/itunes-podcast-review-manager
 Tags: itunes, podcast, podcasts, podcasting, review, reviews, international, country, countries, audio
 Requires at least: 4.0
-Tested up to: 4.3
+Tested up to: 4.3.1
 Stable tag: trunk
 License: GPLv2 or later
 
@@ -35,6 +35,12 @@ Created by [EfficientWP](http://efficientwp.com "EfficientWP"). Flag icons court
 1. The plugin panel in the Podcast Reviews menu.
 
 == Changelog ==
+
+= 3.1 =
+* \[CHANGED\] Review Averages now show 2 decimal points
+* \[CHANGED\] Reviews sort by date by default
+* \[FIXED\] Review history not loading/saving properly
+
 
 = 3.0 =
 * \[CHANGED\] Major changes from the previous point versions not previously released

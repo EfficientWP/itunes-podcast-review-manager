@@ -29,7 +29,7 @@ class IPRM_Podcast {
 		$this->itunes_feed_name = $this->settings['itunes_feed_name'];
 		$this->itunes_feed_artist = $this->settings['itunes_feed_artist'];
 		$this->itunes_feed_summary = $this->settings['itunes_feed_summary'];
-		$this->review_cache_history = unserialize (iprm_get_option( 'iprm_review_cache_history' . $url ));
+		$this->review_cache_history = unserialize (iprm_get_option( 'iprm_review_cache_history' . $this->itunes_id ));
 		
 		$file = WP_PLUGIN_DIR  . "/itunes-podcast-review-manager/cache/cache_$this->itunes_id.cache";
 		
@@ -167,11 +167,7 @@ class IPRM_Podcast {
 						
 						<!-- TABLE HEADINGS -->
 						<tr>
-							<th class="unsortable">
-								NUMBER<br>
-								<span id="iprm_review_count"><?php ECHO "(" . count($this->reviews) . ")"; ?></span>
-								
-							</th>
+	
 							<th class="unsortable">
 								FLAG
 							</th>
@@ -240,7 +236,6 @@ class IPRM_Podcast {
 								
 														
 									echo "<tr>";
-										echo "<td>" . $review_number . "</td>";
 										echo "<td class='flag'>" . $flagTD . "</td>";
 										echo "<td>" . $review['country'] . "</td>";
 										echo "<td>" . $date . "</td>";
@@ -385,6 +380,7 @@ class IPRM_Podcast {
 		/* DE-DUPE NEW REVIEWS */
 		$new_reviews = iprm_remove_duplicates_from_review_array( $new_reviews  );
 		
+
 		/* ADD CACHED REVIEWS TO NEW REVIEWS */
 		if (!is_array ($this->reviews)) { $this->reviews = []; }
 		
@@ -392,6 +388,20 @@ class IPRM_Podcast {
 
 		/* REMOVE DUPLICATES FROM COMBINED REVIEW ARRAY */
 		$this->reviews = iprm_remove_duplicates_from_review_array( $this->reviews  );
+		
+		/* SORT REVIEWS ARRAY BY DATE */
+		
+		foreach ( $this->reviews as $key => $row ) {
+		    $review_date[$key]  = $row['review_date'];
+		    $review_country[$key] = $row['country'];
+		    $review_rating[$key] = $row['rating'];
+		    $review_name[$key] = $row['name'];
+		    $review_title[$key] = $row['title'];
+		    $review_content[$key] = $row['content'];
+		}
+		
+		array_multisort( $review_date, SORT_DESC, $review_name, SORT_ASC, $this->reviews );
+		
 		
 		/* ADD TIME AND REVIEW COUNT TO REVIEW CACHE HISTORY */
 		$review_count = count( $this->reviews );
@@ -404,7 +414,7 @@ class IPRM_Podcast {
 		/* REPLACE OLD REVIEW CACHE HISTORY WITH NEW REVIEW CACHE HISTORY */
 		
 		$serialStr = serialize ($this->review_cache_history);
-		$dbSuccess = iprm_update_option(  "iprm_review_cache_history$this->itunes_url", $serialStr );
+		$dbSuccess = iprm_update_option(  "iprm_review_cache_history$this->itunes_id", $serialStr );
 		
 		if (!$dbSuccess) { 
 			echo "problem writing history cache";

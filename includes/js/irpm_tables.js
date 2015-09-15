@@ -34,7 +34,7 @@ function loadRatingsSelectBox(reviewsTable){
 	/* POPULATE NUMBER OF VALUES FOR EACH OPTION */
 	for (var i = 1; i < tableRowCount; i++) { /* USE 1 TO SKIP FIRST ROW (HEADER) */
 	
-		currentInnerHTML = parseInt(reviewsTable.rows[i].children[4].innerHTML, 10);
+		currentInnerHTML = parseInt(reviewsTable.rows[i].children[3].innerHTML, 10);
 		reviewScore += currentInnerHTML;
 		
 			
@@ -43,7 +43,7 @@ function loadRatingsSelectBox(reviewsTable){
 	
 	/* FILL IN THE RATING HEADING WITH AVERAGE*/
 	var num = reviewScore / reviewCount;
-	iprm_review_h2.innerHTML += " (" + num.toFixed(1) + " average)";
+	iprm_review_h2.innerHTML = reviewCount + " Reviews (" + num.toFixed(2) + " average)";
 	
 }
 
