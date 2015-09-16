@@ -58,9 +58,8 @@ class IPRM_Podcast {
 		
 		/* DONT WRITE DEFAULT TO DB */
 		if (($url != 'http://itunes.apple.com/us/' ) && (isSet ($this->itunes_id))){
-		iprm_update_option( 'iprm_podcasts', $podcastArray );
+			iprm_update_option( 'iprm_podcasts', $podcastArray );
 		}
-		
 		
 	}
 	

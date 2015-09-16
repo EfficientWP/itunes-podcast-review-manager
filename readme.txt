@@ -36,18 +36,20 @@ Created by [EfficientWP](http://efficientwp.com "EfficientWP"). Flag icons court
 
 == Changelog ==
 
+= 3.2 =
+* \[FIXED\] Issue with missing files on upgrade
+
 = 3.1 =
 * \[CHANGED\] Review Averages now show 2 decimal points
 * \[CHANGED\] Reviews sort by date by default
 * \[FIXED\] Review history not loading/saving properly
-
 
 = 3.0 =
 * \[CHANGED\] Major changes from the previous point versions not previously released
 * \[CHANGED\] Responsive design CSS
 
 = 2.3 =
-* \[ADDED\]   Client-side review sorting
+* \[ADDED\] Client-side review sorting
 * \[CHANGED\] Improved searching code
 * \[CHANGED\] Design changes
 
