@@ -36,6 +36,9 @@ Created by [EfficientWP](http://efficientwp.com "EfficientWP"). Flag icons court
 
 == Changelog ==
 
+= 3.3 =
+* \[FIXED\] Fix: "Parse error: syntax error, unexpected '[' " on old versions of PHP (UPGRADE!)
+
 = 3.2 =
 * \[FIXED\] Issue with missing files on upgrade
 
