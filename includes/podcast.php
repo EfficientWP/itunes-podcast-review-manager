@@ -36,7 +36,7 @@ class IPRM_Podcast {
 		if (file_exists ( $file ) ) {
 			$this->reviews = unserialize (file_get_contents($file)); 
 		}else{
-			$this->reviews = [];
+			$this->reviews = array();
 		}
 		
 		
@@ -381,7 +381,7 @@ class IPRM_Podcast {
 		
 
 		/* ADD CACHED REVIEWS TO NEW REVIEWS */
-		if (!is_array ($this->reviews)) { $this->reviews = []; }
+		if (!is_array ($this->reviews)) { $this->reviews = array(); }
 		
 		$this->reviews = array_merge( $this->reviews, $new_reviews );
 
