@@ -65,13 +65,18 @@ class IPRM_Podcast {
 	
 	function get_itunes_metadata($url) {
 		
-		preg_match ( '([0-9][0-9][0-9]+)', $url, $matches );		
+		$path = parse_url ( $url , PHP_URL_PATH );
+		$pieces = explode ( "/" , $path );
+		$id = $pieces[4];
+		$id = str_ireplace ("id", "", $id ); 
 		
+		
+				
 		/* ONLY CONTINUE IF WE HAVE GOOD URL AND PARSED AN ID */
-		if ( (filter_var($url, FILTER_VALIDATE_URL)) && (isSet ( $matches[0])) ){			
+		if ( (filter_var($url, FILTER_VALIDATE_URL)) && (!empty ($id)) ){			
 	
 		/* POPULATE METADATA ARRAY */
-		$metadataArray['itunes_id'] = $matches[0];
+		$metadataArray['itunes_id'] = $id;
 		
 						
 		/* BLACK MAGIC ? */
