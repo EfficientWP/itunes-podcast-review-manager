@@ -1,6 +1,6 @@
 === iTunes Podcast Review Manager ===
 
-Contributors: Doug Yuen, Ryan Novotny
+Contributors: Doug Yuen
 Author URI: http://efficientwp.com
 Plugin URI: http://efficientwp.com/plugins/itunes-podcast-review-manager
 Tags: itunes, podcast, podcasts, podcasting, review, reviews, international, country, countries, audio
@@ -15,7 +15,7 @@ Get your iTunes podcast reviews from all countries. Checks iTunes automatically 
 
 Checks iTunes for all international reviews of a podcast. Your iTunes reviews are displayed in the backend menu, and optionally on the front end of your site using the [iprm] shortcode. iTunes is automatically checked for new podcast reviews every 4 hours. Note: sometimes in iTunes, the review feeds for certain countries are unreachable, and you will need to wait for the next automatic check or click the button to check manually.
 
-We're working on a new service for checking your international podcast reviews. It will include features like email notifications, charts, filtering, multiple podcasts, and more. For more information and to find out when we launch, please [enter your email here](http://eepurl.com/bhU4SD "Podcast Review Service").
+We're working on a new service for checking your international podcast reviews. It will include features like email notifications, charts, filtering, multiple podcasts, and more. For more information and to find out when we launch, please go to [ReviewRanger.com](http://reviewranger.com "Review Ranger").
 
 Created by [EfficientWP](http://efficientwp.com "EfficientWP"). Flag icons courtesy of [IconDrawer](http://www.icondrawer.com "IconDrawer").
 
@@ -35,6 +35,9 @@ Created by [EfficientWP](http://efficientwp.com "EfficientWP"). Flag icons court
 1. The plugin panel in the Podcast Reviews menu.
 
 == Changelog ==
+
+= 3.4 =
+* \[FIXED\] Issue with podcasts with numbers in title
 
 = 3.3 =
 * \[FIXED\] Fix: "Parse error: syntax error, unexpected '[' " on old versions of PHP (UPGRADE!)
