@@ -1,11 +1,11 @@
 === iTunes Podcast Review Manager ===
 
 Contributors: Doug Yuen
-Author URI: http://efficientwp.com
-Plugin URI: http://efficientwp.com/plugins/itunes-podcast-review-manager
+Author URI: https://reviewranger.com
+Plugin URI: https://efficientwp.com/plugins/itunes-podcast-review-manager
 Tags: itunes, podcast, podcasts, podcasting, review, reviews, international, country, countries, audio
 Requires at least: 4.0
-Tested up to: 4.3.1
+Tested up to: 4.9.4
 Stable tag: trunk
 License: GPLv2 or later
 
@@ -17,7 +17,7 @@ Checks iTunes for all international reviews of a podcast. Your iTunes reviews ar
 
 We're working on a new service for checking your international podcast reviews. It will include features like email notifications, charts, filtering, multiple podcasts, and more. For more information and to find out when we launch, please go to [ReviewRanger.com](http://reviewranger.com "Review Ranger").
 
-Created by [EfficientWP](http://efficientwp.com "EfficientWP"). Flag icons courtesy of [IconDrawer](http://www.icondrawer.com "IconDrawer").
+Created by [EfficientWP](https://efficientwp.com "EfficientWP"). Flag icons courtesy of [IconDrawer](http://www.icondrawer.com "IconDrawer").
 
 == Installation ==
 
@@ -28,13 +28,16 @@ Created by [EfficientWP](http://efficientwp.com "EfficientWP"). Flag icons court
 
 == Frequently Asked Questions ==
 
-[Plugin page on EfficientWP](http://efficientwp.com/plugins/itunes-podcast-review-manager "iTunes Podcast Review Manager")
+[Plugin page on EfficientWP](https://efficientwp.com/plugins/itunes-podcast-review-manager "iTunes Podcast Review Manager")
 
 == Screenshots ==
 
 1. The plugin panel in the Podcast Reviews menu.
 
 == Changelog ==
+
+= 3.5 =
+* \[FIXED\] Issue with duplicate reviews from iTunes
 
 = 3.4 =
 * \[FIXED\] Issue with podcasts with numbers in title

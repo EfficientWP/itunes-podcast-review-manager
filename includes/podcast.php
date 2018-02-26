@@ -369,7 +369,7 @@ class IPRM_Podcast {
 							'title' => iprm_get_contents_inside_tag( $current_entry, '<title>', '</title>' ),
 							'content' => iprm_get_contents_inside_tag( $current_entry, '<content type="text">', '</content>' ),
 						);
-				
+
 						/* CHECK TO MAKE SURE THERE IS A RATING AND NAME BEFORE ADDING REVIEW TO ARRAY */
 						if ( ( $new_review['rating'] == '' ) || ( $new_review['name'] == '' ) ||( $new_review['name'] == 'EMPTYSTR' ) ) {
 							
@@ -390,13 +390,18 @@ class IPRM_Podcast {
 		
 		$this->reviews = array_merge( $this->reviews, $new_reviews );
 
-		/* REMOVE DUPLICATES FROM COMBINED REVIEW ARRAY */
-		$this->reviews = iprm_remove_duplicates_from_review_array( $this->reviews  );
-		
 		/* SORT REVIEWS ARRAY BY DATE */
 		
 		foreach ( $this->reviews as $key => $row ) {
-		    $review_date[$key]  = $row['review_date'];
+			/* TRIM ARRAY DATE */
+			if ( stripos( $row['review_date'], 'T' ) ) {
+				$trimmed_review_date = substr( $row['review_date'], 0, stripos( $row['review_date'], 'T' ) );
+				$this->reviews[$key]['review_date'] = $trimmed_review_date;
+			}
+			if ( $row['review_date'] == '') {
+				unset( $this->reviews[$row] );
+			}
+		    $review_date[$key] = $row['review_date'];
 		    $review_country[$key] = $row['country'];
 		    $review_rating[$key] = $row['rating'];
 		    $review_name[$key] = $row['name'];
@@ -405,7 +410,9 @@ class IPRM_Podcast {
 		}
 		
 		array_multisort( $review_date, SORT_DESC, $review_name, SORT_ASC, $this->reviews );
-		
+
+		/* REMOVE DUPLICATES FROM COMBINED REVIEW ARRAY */
+		$this->reviews = iprm_remove_duplicates_from_review_array( $this->reviews  );		
 		
 		/* ADD TIME AND REVIEW COUNT TO REVIEW CACHE HISTORY */
 		$review_count = count( $this->reviews );
