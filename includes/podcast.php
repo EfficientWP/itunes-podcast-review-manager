@@ -33,37 +33,37 @@ class IPRM_Podcast {
 		
 		$file = WP_PLUGIN_DIR  . "/itunes-podcast-review-manager/cache/cache_$this->itunes_id.cache";
 		
-		if (file_exists ( $file ) ) {
-			$this->reviews = unserialize (file_get_contents($file)); 
-		}else{
+		if ( file_exists ( $file ) ) {
+			$this->reviews = unserialize ( file_get_contents( $file ) ); 
+		} else {
 			$this->reviews = array();
 		}
 		
 		
 		/* WRITE TO DB NEW LIST OF PODCASTS AND WHAT ONE IS ACTIVE */
-		if ($url != 'http://itunes.apple.com/us/'){
+		if ( $url != 'http://itunes.apple.com/us/' ) {
 			iprm_update_option( 'iprm_active_product' , $url );
 		}
 		$podcastArray = iprm_get_option( 'iprm_podcasts' );
-		if (!is_array ( $podcastArray )){
+		if ( !is_array ( $podcastArray ) ) {
 			$podcastArray = array();
 		}
-		$key = array_search($url,$podcastArray);
+		$key = array_search( $url,$podcastArray );
 		
-		if (!$key) { /*NOT FOUND IN EXISITNG DB*/
+		if ( !$key ) { /* NOT FOUND IN EXISITNG DB */
 			$podcastArray[] = $url;
 		}
 		
-		$podcastArray  = array_unique($podcastArray);
+		$podcastArray = array_unique( $podcastArray );
 		
 		/* DONT WRITE DEFAULT TO DB */
-		if (($url != 'http://itunes.apple.com/us/' ) && (isSet ($this->itunes_id))){
+		if ( ( $url != 'http://itunes.apple.com/us/' ) && ( isSet ( $this->itunes_id ) ) ) {
 			iprm_update_option( 'iprm_podcasts', $podcastArray );
 		}
 		
 	}
 	
-	function get_itunes_metadata($url) {
+	function get_itunes_metadata( $url ) {
 		
 		$path = parse_url ( $url , PHP_URL_PATH );
 		$pieces = explode ( "/" , $path );
@@ -73,7 +73,7 @@ class IPRM_Podcast {
 		
 				
 		/* ONLY CONTINUE IF WE HAVE GOOD URL AND PARSED AN ID */
-		if ( (filter_var($url, FILTER_VALIDATE_URL)) && (!empty ($id)) ){			
+		if ( ( filter_var( $url, FILTER_VALIDATE_URL ) ) && ( !empty ( $id ) ) ) {			
 	
 		/* POPULATE METADATA ARRAY */
 		$metadataArray['itunes_id'] = $id;
@@ -123,7 +123,7 @@ class IPRM_Podcast {
 				
 		return $metadataArray;
 		
-		}else {
+		} else {
 			return false;
 		}		
 	}
@@ -275,6 +275,15 @@ class IPRM_Podcast {
 		$new_settings = array( );
 		/* GET ARRAY OF ALL COUNTRY CODES AND COUNTRY NAMES */
 		$country_codes = iprm_get_country_data( '', '' );
+		if ( $country_codes != '' ) {
+			$shuffle_keys = array_keys( $country_codes );
+			shuffle( $shuffle_keys );
+			$temp_array = array();
+			foreach( $shuffle_keys as $key ) {
+			    $temp_array[$key] = $country_codes[$key];
+			}
+			$country_codes = $temp_array;
+		}
 		/* CHECKS TO MAKE SURE ITUNES PODCAST URL IS DEFINED */
 		
 		if ( isSet( $this->itunes_id ) ) {
@@ -294,8 +303,8 @@ class IPRM_Podcast {
 				$last_review_page_url = iprm_get_contents_inside_tag( $feed_body1, '<link rel="last" href="', '"/>' );
 				$current_review_page_url = iprm_get_contents_inside_tag( $feed_body1, '<link rel="self" href="', '"/>' );
 				
-				$last_review_page_url = trim($last_review_page_url);
-				$first_review_page_url = trim($first_review_page_url);
+				$last_review_page_url = trim( $last_review_page_url );
+				$first_review_page_url = trim( $first_review_page_url );
 				
 				if ( strlen( $first_review_page_url ) != 0 ) {
 					$firstPage = iprm_get_contents_inside_tag( $first_review_page_url, '/page=', '/id' );
@@ -382,7 +391,7 @@ class IPRM_Podcast {
 				}
 			}
 		/* DE-DUPE NEW REVIEWS */
-		$new_reviews = iprm_remove_duplicates_from_review_array( $new_reviews  );
+		$new_reviews = iprm_remove_duplicates_from_review_array( $new_reviews );
 		
 
 		/* ADD CACHED REVIEWS TO NEW REVIEWS */

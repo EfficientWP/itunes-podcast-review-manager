@@ -5,7 +5,7 @@ Author URI: https://reviewranger.com
 Plugin URI: https://efficientwp.com/plugins/itunes-podcast-review-manager
 Tags: itunes, podcast, podcasts, podcasting, review, reviews, international, country, countries, audio
 Requires at least: 4.0
-Tested up to: 4.9.4
+Tested up to: 4.9.8
 Stable tag: trunk
 License: GPLv2 or later
 
@@ -35,6 +35,9 @@ Created by [EfficientWP](https://efficientwp.com "EfficientWP"). Flag icons cour
 1. The plugin panel in the Podcast Reviews menu.
 
 == Changelog ==
+
+= 3.6 =
+* \[CHANGED\] Randomized order of country checks (iTunes will time out and not go through the full list of countries)
 
 = 3.5 =
 * \[FIXED\] Issue with duplicate reviews from iTunes
