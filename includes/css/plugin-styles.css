@@ -114,6 +114,7 @@ p.submit {
 .iprm_panel {
 	background-color: #fff;
 	display: inline-block;
+	min-height: 250px;
 	margin: 1rem 0;
     /*overflow: hidden;/**/
 	width: 100%;
@@ -218,8 +219,10 @@ p.submit {
 }
 #iprm_meta_img {
 	background-color: #ddd;
+	background-position: center center;
 	display: table-cell;
 	height: 100%;
+	min-width: 250px;
 	padding: 0 1rem 0 0;
 	text-align: center;
 	vertical-align: top;
